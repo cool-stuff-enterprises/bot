@@ -6,7 +6,7 @@ const org = 'cool-stuff-enterprises';
 
 const createRepo = async (event, context) => {
   body = JSON.parse(event.body);
-  const token = await getInstallationAccessToken(body.installation.id);
+  const token = await getInstallationAccessToken();
 
   axios({
     method: 'post',

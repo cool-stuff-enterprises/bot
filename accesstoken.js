@@ -14,7 +14,7 @@ const getJWTAuthToken = () => {
   return jwt.sign(payload, cert, { algorithm: 'RS256' });
 }
 
-const getInstallationAccessToken = (installation_id) => {
+const getInstallationAccessToken = (installation_id = 676080) => {
   const jwt = getJWTAuthToken();
   return axios.post(`https://api.github.com/app/installations/${installation_id}/access_tokens`, {}, {
     headers: {
