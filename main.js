@@ -12,13 +12,13 @@ const createRepo = async (event, context) => {
     method: 'post',
     url: `https://api.github.com/orgs/${org}/repos`,
     data: {
-      "name": "Hello-World",
-      "description": "This is your first repository",
-      "homepage": "https://github.com",
+      "name": body.name,
+      "description": body.description,
+      "homepage": body.homepage,
       "private": false,
-      "has_issues": true,
-      "has_projects": true,
-      "has_wiki": true
+      "has_issues": body.has_issues,
+      "has_projects": body.has_rojects,
+      "has_wiki": body.has_wiki
     },
     headers: {
       "Authorization": `Bearer ${token}`,
