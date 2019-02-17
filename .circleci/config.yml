@@ -22,9 +22,7 @@ jobs:
 
       - run:
           name: Inject Private Key
-          command: |
-            echo $PRIVATEKEY | base64 --decode >> private.pem
-            cat private.pem
+          command: echo $PRIVATEKEY | base64 --decode >> private.pem
 
       - run:
           name: Deploy application

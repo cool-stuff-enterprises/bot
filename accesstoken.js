@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
-
+const axios = require('axios');
 
 const getJWTAuthToken = () => {
   const cert = fs.readFileSync('private.pem', 'utf8');
