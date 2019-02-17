@@ -5,6 +5,7 @@ const fs = require('fs');
 const getJWTAuthToken = () => {
   const cert = fs.readFileSync('private.pem', 'utf8');
 
+  console.log(cert.toString());
   console.log(cert);
 
   const payload = {
