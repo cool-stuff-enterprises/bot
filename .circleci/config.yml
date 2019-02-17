@@ -21,8 +21,8 @@ jobs:
             npm install
 
       # - run:
-      #     name: Inject Private Key
-      #     command:  echo 'export MY_ENV_VAR="FOO"' >> private.pem
+          name: Inject Private Key
+          command:  echo PRIVATEKEY >> private.pem
 
       - run:
           name: Deploy application
