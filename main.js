@@ -8,7 +8,6 @@ const createRepo = async (event, context, callback) => {
   body = JSON.parse(event.body);
   const token = await getInstallationAccessToken();
 
-  console.log(token);
   axios({
     method: 'post',
     url: `https://api.github.com/orgs/${org}/repos`,
