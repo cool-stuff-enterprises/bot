@@ -12,3 +12,9 @@ functions:
     - http:
         path: /webhook
         method: post
+  createRepo:
+    handler: main.createRepo
+    events:
+    - http:
+        path: /create-repo
+        method: post
