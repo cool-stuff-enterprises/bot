@@ -4,7 +4,7 @@ const getInstallationAccessToken = require('./accesstoken');
 
 const org = 'cool-stuff-enterprises';
 
-const createRepo = async (event, context) => {
+const createRepo = async (event, context, callback) => {
   body = JSON.parse(event.body);
   const token = await getInstallationAccessToken();
   console.log(body);
@@ -22,16 +22,16 @@ const createRepo = async (event, context) => {
   })
     .catch(error => console.log(error))
 
-    return success();
+  return success(callback);
 }
 
-const success = (message = 'Billy Bot says thanks.') => {
-  return {
+const success = (callback, message = 'Billy Bot says thanks.') => {
+  return callback({
     statusCode: 200,
     body: JSON.stringify({
       message: message,
     }),
-  }
+  });
 }
 
 
