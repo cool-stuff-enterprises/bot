@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 
-const getJWTAuthToken = () => {
-  const cert = fs.readFileSync('private.pem');
+const getJWTAuthToken = async () => {
+  const cert = await fs.readFileSync('private.pem');
 
   console.log(cert);
   
@@ -16,8 +16,8 @@ const getJWTAuthToken = () => {
   return jwt.sign(payload, cert, { algorithm: 'RS256' });
 }
 
-const getInstallationAccessToken = (installation_id = 676080) => {
-  const jwt = getJWTAuthToken();
+const getInstallationAccessToken = async (installation_id = 676080) => {
+  const jwt = await getJWTAuthToken();
   return axios.post(`https://api.github.com/app/installations/${installation_id}/access_tokens`, {}, {
     headers: {
       "Authorization": `Bearer ${jwt}`,
