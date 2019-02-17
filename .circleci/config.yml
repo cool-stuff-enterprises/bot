@@ -1,4 +1,4 @@
-version: 2.4
+version: 2
 jobs:
   build:
     docker:
@@ -23,8 +23,7 @@ jobs:
       - run:
           name: Inject Private Key
           command: |
-            echo `echo $PRIVATEKEY | base64 --decode` >> private.pem
-            cat private.pem
+            echo `echo $PRIVATEKEY | base64 --decode` 
 
       - run:
           name: Deploy application

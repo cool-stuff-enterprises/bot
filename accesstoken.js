@@ -5,9 +5,6 @@ const fs = require('fs');
 const getJWTAuthToken = () => {
   const cert = fs.readFileSync('private.pem', 'utf8');
 
-  console.log(cert.toString());
-  console.log(cert);
-
   const payload = {
     exp: Math.floor(Date.now() / 1000) + (60 * 10),
     iat: Math.floor(Date.now() / 1000),
