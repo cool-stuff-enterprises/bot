@@ -19,11 +19,12 @@ jobs:
           command: |
             sudo npm i -g serverless
             npm install
-
+            
+      # echo `echo $PRIVATEKEY | base64 --decode` >> private.pem
       - run:
           name: Inject Private Key
           command: |
-            echo `echo $PRIVATEKEY | base64 --decode` >> private.pem
+            echo $PRIVATEKEY | base64 --decode | >> private.pem
             cat private.pem
 
       - run:
