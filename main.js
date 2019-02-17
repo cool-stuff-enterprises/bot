@@ -1,4 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
+
+const getInstallationAccessToken = require('./accesstoken');
 
 const org = 'cool-stuff-enterprises';
 
