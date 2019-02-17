@@ -8,7 +8,7 @@ const getJWTAuthToken = () => {
   const payload = {
     exp: Math.floor(Date.now() / 1000) + (60 * 10),
     iat: Math.floor(Date.now() / 1000),
-    iss: '16468'
+    iss: 25419
   }
 
   return jwt.sign(payload, cert, { algorithm: 'RS256' });
