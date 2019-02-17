@@ -32,7 +32,10 @@ const createRepo = async (event, context) => {
 
 const success = (message = 'Billy Bot says thanks.') => {
   return {
-    message: message,
+    statusCode: 200,
+    body: JSON.stringify({
+      message: message,
+    }),
   }
 }
 
