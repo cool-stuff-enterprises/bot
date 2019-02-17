@@ -18,6 +18,4 @@ functions:
     - http:
         path: /create-repo
         method: post
-        cors:
-          origins:
-            - http://localhost
+        cors: true
