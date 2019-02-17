@@ -33,6 +33,9 @@ const createRepo = async (event, context, callback) => {
 const success = (callback, message = 'Billy Bot says thanks.') => {
   return callback(null, {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       message: message,
     }),
