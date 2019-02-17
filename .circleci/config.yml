@@ -20,7 +20,7 @@ jobs:
             sudo npm i -g serverless
             npm install
 
-      # - run:
+      - run:
           name: Inject Private Key
           command:  echo PRIVATEKEY >> private.pem
 
