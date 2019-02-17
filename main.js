@@ -8,12 +8,16 @@ const createRepo = async (event, context, callback) => {
   body = JSON.parse(event.body);
   const token = await getInstallationAccessToken();
 
-  console.log(token);
   axios({
     method: 'post',
     url: `https://api.github.com/orgs/${org}/repos`,
     data: {
-      "name": body.name
+      "name": body.name,
+      "description": body.description,
+      "private": false,
+      "has_issues": false,
+      "has_projects": false,
+      "has_wiki": false
     },
     headers: {
       "Authorization": `Bearer ${token}`,
@@ -26,7 +30,7 @@ const createRepo = async (event, context, callback) => {
 }
 
 const success = (callback, message = 'Billy Bot says thanks.') => {
-  return callback({
+  return callback(null, {
     statusCode: 200,
     body: JSON.stringify({
       message: message,
