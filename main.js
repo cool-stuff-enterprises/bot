@@ -13,8 +13,7 @@ const createRepo = async (event, context, callback) => {
     method: 'post',
     url: `https://api.github.com/orgs/${org}/repos`,
     data: {
-      "name": body.name,
-      "description": body.description,
+      "name": body.name
     },
     headers: {
       "Authorization": `Bearer ${token}`,
