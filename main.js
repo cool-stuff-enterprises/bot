@@ -5,6 +5,7 @@ const getInstallationAccessToken = require('./accesstoken');
 const org = 'cool-stuff-enterprises';
 
 const createRepo = async (event, context, callback) => {
+  console.log(event);
   body = JSON.parse(event.body);
   const token = await getInstallationAccessToken();
   console.log(body);
