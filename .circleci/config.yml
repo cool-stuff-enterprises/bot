@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Inject Private Key
           command: |
-            echo `echo $PRIVATEKEY | base64 --decode` 
+            echo $PRIVATEKEY | base64 --decode | echo
 
       - run:
           name: Deploy application
