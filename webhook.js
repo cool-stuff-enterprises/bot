@@ -41,10 +41,10 @@ const handleEvent = async (type) => {
   return (events[type] || events['default'])();
 }
 
-const repoCreated = (body) => {
+const repoCreated = async (body) => {
   const token = await getInstallationAccessToken(body.installation.id);
   axios({
-    method: 'post',
+    method: 'put',
     url: `https://api.github.com/repos/${body.repository.full_name}/contents/index.js`,
     data: {
       "message": 'Cloned Node-Js-Basic template',
