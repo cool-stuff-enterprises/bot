@@ -4,6 +4,7 @@ const axios = require('axios');
 const getInstallationAccessToken = require('./accesstoken');
 
 let body;
+const org = 'cool-stuff-enterprises';
 
 module.exports.main = async (event, context, callback) => {
   // TODO: Authenticate request is from github
@@ -27,11 +28,37 @@ const handleEvent = async (type) => {
   const events = {
     'default': () => {
       console.log("No response available for event:", type);
+    },
+    'repository': () => {
+      console.log(body);
+      if (body.action == 'created') {
+        repoCreated(body);
+      }
     }
   }
 
   console.log("Getting response for:", type);
   return (events[type] || events['default'])();
+}
+
+const repoCreated = (body) => {
+  const token = await getInstallationAccessToken(body.installation.id);
+  axios({
+    method: 'post',
+    url: `https://api.github.com/repos/${body.repository.full_name}/contents/index.js`,
+    data: {
+      "message": 'Cloned Node-Js-Basic template',
+      "content": Buffer.from(`
+      'use strict'
+      console.log('hello world');
+      `).toString('base64'),
+    },
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Accept": "application/vnd.github.machine-man-preview+json"
+    }
+  })
+    .catch(error => console.log(error))
 }
 
 const createComment = async (comment) => {
