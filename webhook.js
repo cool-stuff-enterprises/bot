@@ -32,7 +32,7 @@ const handleEvent = async (type) => {
     'repository': () => {
       console.log(body);
       if (body.action == 'created') {
-        repoCreated(body);
+        // repoCreated(body);
       }
     }
   }
